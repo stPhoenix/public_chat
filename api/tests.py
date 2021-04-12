@@ -23,7 +23,8 @@ class TestMessages02Detail(TestCase):
         fill_chat()
 
     def test_message_detail(self):
-        response = self.client.get('/api/messages/single/15')
+        #Improve for postgresql case - because every time TestCase destroyed it also destroys data in database, so new id for messages will start with 51
+        response = self.client.get('/api/messages/single/65')
         self.assertTrue(response.status_code == 200, response.status_code)
         self.assertContains(response, 'text message 15')
 
